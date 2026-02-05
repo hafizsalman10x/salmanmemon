@@ -99,14 +99,44 @@ body {
   border: 4px solid #0b0f1d;
 }
 
+/* Gold shimmer */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255,255,255,0.6),
+    transparent 70%
+  );
+  animation: shimmerMove 3s infinite;
+}
+
+@keyframes shimmerMove {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+
 /* Heading */
 .gold-text {
   font-size: 28px;
   font-weight: 700;
+  line-height: 1.2;
   margin-bottom: 12px;
   background: linear-gradient(90deg, #ffd36a, #fff0b3, #b88900);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.gold-text span {
+  font-size: 18px;
+  font-weight: 500;
 }
 
 /* Trust text */
@@ -116,51 +146,25 @@ body {
   margin-bottom: 22px;
 }
 
-/* ===== PREMIUM SUBSCRIBER BOX ===== */
+/* Subscriber counter */
 .subscriber-box {
-  position: relative;
-  padding: 18px 14px;
-  margin-bottom: 26px;
-  border-radius: 20px;
-  background: rgba(255, 215, 120, 0.07);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 215, 120, 0.35);
-  box-shadow:
-    0 10px 40px rgba(255, 200, 80, 0.15),
-    inset 0 0 18px rgba(255,255,255,0.1);
-  overflow: hidden;
-}
-
-/* Shine animation */
-.subscriber-box::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -70%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
-  transform: skewX(-20deg);
-  animation: shineMove 6s infinite;
-}
-
-@keyframes shineMove {
-  0% { left: -70%; }
-  100% { left: 130%; }
+  background: rgba(255, 215, 120, 0.08);
+  border: 1px solid rgba(255, 215, 120, 0.25);
+  border-radius: 18px;
+  padding: 14px;
+  margin-bottom: 24px;
 }
 
 .subscriber-box .count {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 700;
-  background: linear-gradient(90deg, #ffd36a, #fff0b3);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #ffd36a;
 }
 
 .subscriber-box .label {
+  display: block;
   font-size: 12px;
-  opacity: 0.85;
-  margin-top: 4px;
+  opacity: 0.8;
 }
 
 /* Badges */
@@ -179,61 +183,43 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* ===== GLASS TELEGRAM BUTTON ===== */
+/* Telegram button */
 .telegram-btn {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
+  display: inline-flex;              /* changed for icon alignment */
+  align-items: center;               /* center icon + text */
   justify-content: center;
-  gap: 10px;
+  gap: 10px;                         /* space between icon & text */
   text-decoration: none;
-  padding: 16px 22px;
+  background: linear-gradient(135deg, #008cff, #00c6ff);
+  color: #ffffff;
+  padding: 15px 20px;
   border-radius: 18px;
   font-weight: 600;
   font-size: 16px;
   margin-bottom: 28px;
-  color: #ffffff;
-  background: rgba(0, 140, 255, 0.12);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(0, 195, 255, 0.6);
-  box-shadow:
-    0 10px 40px rgba(0, 140, 255, 0.35),
-    inset 0 0 15px rgba(255,255,255,0.15);
-  overflow: hidden;
-  transition: all 0.3s ease;
-  animation: glassPulse 3s infinite;
+  box-shadow: 0 15px 45px rgba(0, 140, 255, 0.45);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: pulseGlow 2s infinite;
 }
 
+/* Telegram SVG Icon */
 .tg-icon {
   width: 20px;
   height: 20px;
   fill: currentColor;
-}
-
-.telegram-btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -70%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.7), transparent);
-  transform: skewX(-20deg);
-  animation: shineMove 5s infinite;
+  flex-shrink: 0;
 }
 
 .telegram-btn:hover {
-  transform: translateY(-4px) scale(1.04);
-  box-shadow:
-    0 15px 65px rgba(0, 140, 255, 0.7),
-    0 0 35px rgba(0, 195, 255, 0.8);
-  border-color: #00c6ff;
+  transform: translateY(-3px);
+  box-shadow: 0 18px 60px rgba(0, 140, 255, 0.65);
 }
 
-@keyframes glassPulse {
-  0% { box-shadow: 0 0 0 rgba(0,140,255,0.4); }
-  50% { box-shadow: 0 0 35px rgba(0,195,255,0.9); }
-  100% { box-shadow: 0 0 0 rgba(0,140,255,0.4); }
+/* Pulse animation */
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 rgba(0,140,255,0.6); }
+  50% { box-shadow: 0 0 28px rgba(0,140,255,0.9); }
+  100% { box-shadow: 0 0 0 rgba(0,140,255,0.6); }
 }
 
 /* Features */
@@ -273,4 +259,8 @@ footer {
 footer a {
   color: #ffd36a;
   text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
 }
