@@ -1,0 +1,220 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #0b0f1a;
+    color: #fff;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* DARK LUXURY BACKGROUND */
+.background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(0,123,255,0.15), transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(0,123,255,0.1), transparent 40%),
+        #0b0f1a;
+    z-index: -2;
+}
+
+/* GOLD GLOW EFFECT */
+.gold-glow {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255,215,0,0.15), transparent 70%);
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+}
+
+/* MAIN CARD */
+.card {
+    width: 95%;
+    max-width: 420px;
+    padding: 30px 25px;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #111827, #0d1320);
+    box-shadow:
+        0 0 30px rgba(0,123,255,0.15),
+        inset 0 0 20px rgba(255,255,255,0.03);
+    text-align: center;
+}
+
+/* FLOAT ANIMATION */
+.luxury-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* PROFILE IMAGE */
+.profile-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.profile-ring {
+    padding: 5px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, gold, #ffcc00, gold);
+}
+
+.profile-ring img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* GOLD SHIMMER */
+.shimmer {
+    animation: shimmer 3s infinite linear;
+}
+
+@keyframes shimmer {
+    0% { box-shadow: 0 0 10px gold; }
+    50% { box-shadow: 0 0 25px gold; }
+    100% { box-shadow: 0 0 10px gold; }
+}
+
+/* NAME */
+.gold-text {
+    font-size: 22px;
+    font-weight: 700;
+    background: linear-gradient(45deg, gold, #fff, gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+}
+
+/* TRUST TEXT */
+.trust {
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+/* SUBSCRIBER BOX */
+.subscriber-box {
+    background: rgba(255,255,255,0.05);
+    padding: 10px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.count {
+    font-size: 20px;
+    font-weight: 700;
+    color: #00bfff;
+    display: block;
+}
+
+.label {
+    font-size: 12px;
+    color: #aaa;
+}
+
+/* BADGES */
+.badge-row {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.badge {
+    font-size: 11px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.08);
+}
+
+/* TELEGRAM BUTTON */
+.telegram-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    padding: 14px;
+    border-radius: 14px;
+    font-weight: 600;
+    margin-bottom: 18px;
+    background: linear-gradient(135deg, #0088cc, #00aaff);
+    box-shadow: 0 0 20px rgba(0,136,204,0.6);
+    transition: 0.3s ease;
+}
+
+.telegram-btn span {
+    color: white;
+}
+
+.telegram-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 35px rgba(0,136,204,0.9);
+}
+
+/* TELEGRAM ICON */
+.tg-icon {
+    width: 22px;
+    height: 22px;
+    fill: white;
+}
+
+/* BLUE PULSE EFFECT */
+.telegram-pulse {
+    animation: pulseBlue 2s infinite;
+}
+
+@keyframes pulseBlue {
+    0% { box-shadow: 0 0 0 0 rgba(0,136,204,0.7); }
+    70% { box-shadow: 0 0 0 18px rgba(0,136,204,0); }
+    100% { box-shadow: 0 0 0 0 rgba(0,136,204,0); }
+}
+
+/* FEATURES */
+.features {
+    margin: 15px 0;
+}
+
+.feature {
+    font-size: 13px;
+    margin: 6px 0;
+    color: #ddd;
+}
+
+/* DISCLAIMER */
+.disclaimer {
+    font-size: 11px;
+    color: #999;
+    margin-top: 10px;
+}
+
+/* FOOTER */
+footer {
+    font-size: 11px;
+    color: #666;
+    margin-top: 15px;
+}
+
+footer a {
+    color: #00aaff;
+    text-decoration: none;
+}
