@@ -1,189 +1,276 @@
-/* RESET */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background: radial-gradient(circle at top, #0a0f1f, #05070f 70%);
-    color: #fff;
-    overflow-x: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+  min-height: 100vh;
+  background: #07090e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  overflow-x: hidden;
+  padding: 20px;
 }
 
-/* FLOATING PARTICLES */
-body::before {
-    content: "";
-    position: fixed;
-    width: 200%;
-    height: 200%;
-    background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
-    background-size: 50px 50px;
-    animation: moveParticles 60s linear infinite;
-    z-index: -3;
+/* Background pattern */
+.background {
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(145deg, #06080d, #0b1020),
+    repeating-linear-gradient(
+      60deg,
+      rgba(255, 215, 120, 0.03) 0,
+      rgba(255, 215, 120, 0.03) 1px,
+      transparent 1px,
+      transparent 40px
+    );
+  z-index: -2;
 }
 
-@keyframes moveParticles {
-    from { transform: translate(0, 0); }
-    to { transform: translate(-500px, -500px); }
-}
-
-/* GOLD LIGHT AURA */
+/* Gold glow */
 .gold-glow {
-    position: fixed;
-    width: 450px;
-    height: 450px;
-    background: radial-gradient(circle, rgba(255,215,0,0.18), transparent 70%);
-    top: 5%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: -2;
+  position: fixed;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(255, 200, 80, 0.28), transparent 70%);
+  filter: blur(90px);
+  top: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+  animation: glowFloat 8s ease-in-out infinite alternate;
 }
 
-/* GLASS LUXURY CARD */
+@keyframes glowFloat {
+  from { transform: translateX(-50%) scale(1); }
+  to { transform: translateX(-48%) scale(1.1); }
+}
+
+/* Card */
 .card {
-    width: 95%;
-    max-width: 420px;
-    padding: 30px 25px;
-    border-radius: 22px;
-    backdrop-filter: blur(18px);
-    background: rgba(20, 25, 45, 0.55);
-    border: 1px solid rgba(255, 215, 0, 0.3);
-    box-shadow:
-        0 0 40px rgba(0, 140, 255, 0.15),
-        0 0 80px rgba(255, 215, 0, 0.08);
-    text-align: center;
-    position: relative;
+  width: 100%;
+  max-width: 380px;
+  padding: 40px 28px;
+  border-radius: 26px;
+  background: linear-gradient(180deg, #0f1426, #090d18);
+  box-shadow:
+    0 40px 90px rgba(0, 0, 0, 0.85),
+    inset 0 0 0 1px rgba(255, 215, 120, 0.05);
+  text-align: center;
 }
 
-/* GOLD BORDER SHINE */
-.card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 22px;
-    padding: 1px;
-    background: linear-gradient(45deg, gold, transparent, gold);
-    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-}
-
-/* FLOAT ANIMATION */
+/* Floating animation */
 .luxury-float {
-    animation: float 6s ease-in-out infinite;
+  animation: floatCard 6s ease-in-out infinite;
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+@keyframes floatCard {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
 }
 
-/* PROFILE */
+/* Profile */
+.profile-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
 .profile-ring {
-    padding: 5px;
-    border-radius: 50%;
-    background: linear-gradient(45deg, gold, #ffcc00, gold);
-    box-shadow: 0 0 25px gold;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(135deg, #ffd36a, #b88900);
+  box-shadow: 0 0 28px rgba(255, 200, 80, 0.4);
 }
 
 .profile-ring img {
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #0b0f1d;
 }
 
-/* NAME GOLD TEXT */
+/* Gold shimmer */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255,255,255,0.6),
+    transparent 70%
+  );
+  animation: shimmerMove 3s infinite;
+}
+
+@keyframes shimmerMove {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+
+/* Heading */
 .gold-text {
-    font-size: 22px;
-    font-weight: 700;
-    background: linear-gradient(45deg, gold, #fff, gold);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 10px;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #ffd36a, #fff0b3, #b88900);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* TELEGRAM BUTTON – LUXURY BLUE */
-.telegram-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 14px;
-    border-radius: 14px;
-    text-decoration: none;
-    font-weight: 600;
-    margin-bottom: 18px;
-    background: linear-gradient(135deg, #0088cc, #00c3ff);
-    box-shadow:
-        0 0 25px rgba(0,136,204,0.6),
-        inset 0 0 12px rgba(255,255,255,0.2);
-    transition: 0.3s ease;
+/* Trust text */
+.trust {
+  font-size: 14px;
+  color: #cfd6e4;
+  margin-bottom: 22px;
 }
 
-.telegram-btn:hover {
-    transform: scale(1.06);
-    box-shadow:
-        0 0 40px rgba(0,136,204,0.9),
-        0 0 80px rgba(0,195,255,0.4);
-}
-
-/* BLUE PULSE */
-.telegram-pulse {
-    animation: pulseBlue 2s infinite;
-}
-
-@keyframes pulseBlue {
-    0% { box-shadow: 0 0 0 0 rgba(0,136,204,0.7); }
-    70% { box-shadow: 0 0 0 22px rgba(0,136,204,0); }
-    100% { box-shadow: 0 0 0 0 rgba(0,136,204,0); }
-}
-
-.tg-icon {
-    width: 22px;
-    height: 22px;
-    fill: white;
-}
-
-/* SUBSCRIBER BOX */
+/* Subscriber counter */
 .subscriber-box {
-    background: rgba(255,255,255,0.06);
-    padding: 10px;
-    border-radius: 12px;
-    margin-bottom: 15px;
-    border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255, 215, 120, 0.08);
+  border: 1px solid rgba(255, 215, 120, 0.25);
+  border-radius: 18px;
+  padding: 14px;
+  margin-bottom: 24px;
 }
 
-.count {
-    font-size: 20px;
-    font-weight: 700;
-    color: #00bfff;
+.subscriber-box .count {
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffd36a;
 }
 
-/* BADGES */
+/* Badges */
+.badge-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 26px;
+}
+
 .badge {
-    font-size: 11px;
-    padding: 5px 10px;
-    border-radius: 20px;
-    background: rgba(255,255,255,0.08);
+  padding: 8px 14px;
+  font-size: 13px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* FEATURES */
+/* ===== LUXURY TELEGRAM BUTTON ===== */
+.telegram-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  background: linear-gradient(135deg, #008cff, #00c6ff);
+  color: #ffffff;
+  padding: 16px 22px;
+  border-radius: 18px;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 28px;
+  box-shadow:
+    0 10px 40px rgba(0, 140, 255, 0.5),
+    0 0 25px rgba(0, 195, 255, 0.6);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: pulseLuxury 2.5s infinite;
+}
+
+/* Icon */
+.tg-icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+/* Shine sweep */
+.telegram-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+  transform: skewX(-20deg);
+  animation: shineMove 4s infinite;
+}
+
+@keyframes shineMove {
+  0% { left: -75%; }
+  100% { left: 130%; }
+}
+
+/* Hover */
+.telegram-btn:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow:
+    0 15px 60px rgba(0, 140, 255, 0.8),
+    0 0 35px rgba(0, 195, 255, 0.9);
+}
+
+/* Luxury pulse */
+@keyframes pulseLuxury {
+  0% { box-shadow: 0 0 0 0 rgba(0,140,255,0.6); }
+  50% { box-shadow: 0 0 35px rgba(0,195,255,0.9); }
+  100% { box-shadow: 0 0 0 0 rgba(0,140,255,0.6); }
+}
+
+/* Features */
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 26px;
+}
+
 .feature {
-    font-size: 13px;
-    margin: 6px 0;
-    color: #ddd;
+  padding: 14px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 14px;
+  font-size: 14px;
+  border: 1px solid rgba(255,255,255,0.06);
 }
 
-/* FOOTER */
+/* Disclaimer */
+.disclaimer {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #bdbdbd;
+  background: rgba(255,255,255,0.04);
+  padding: 14px;
+  border-radius: 14px;
+  margin-bottom: 22px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Footer */
 footer {
-    font-size: 11px;
-    color: #777;
-    margin-top: 15px;
+  font-size: 12px;
+  color: #8f8f8f;
+}
+
+footer a {
+  color: #ffd36a;
+  text-decoration: none;
 }
