@@ -99,35 +99,10 @@ body {
   border: 4px solid #0b0f1d;
 }
 
-/* Gold shimmer */
-.shimmer {
-  position: relative;
-  overflow: hidden;
-}
-
-.shimmer::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent 30%,
-    rgba(255,255,255,0.6),
-    transparent 70%
-  );
-  animation: shimmerMove 3s infinite;
-}
-
-@keyframes shimmerMove {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(100%); }
-}
-
 /* Heading */
 .gold-text {
   font-size: 28px;
   font-weight: 700;
-  line-height: 1.2;
   margin-bottom: 12px;
   background: linear-gradient(90deg, #ffd36a, #fff0b3, #b88900);
   -webkit-background-clip: text;
@@ -172,7 +147,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* ===== LUXURY TELEGRAM BUTTON ===== */
+/* ===== GLASS TELEGRAM BUTTON ===== */
 .telegram-btn {
   position: relative;
   display: inline-flex;
@@ -180,19 +155,25 @@ body {
   justify-content: center;
   gap: 10px;
   text-decoration: none;
-  background: linear-gradient(135deg, #008cff, #00c6ff);
-  color: #ffffff;
   padding: 16px 22px;
   border-radius: 18px;
   font-weight: 600;
   font-size: 16px;
   margin-bottom: 28px;
+  color: #ffffff;
+
+  /* GLASS EFFECT */
+  background: rgba(0, 140, 255, 0.12);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(0, 195, 255, 0.6);
+
   box-shadow:
-    0 10px 40px rgba(0, 140, 255, 0.5),
-    0 0 25px rgba(0, 195, 255, 0.6);
+    0 10px 40px rgba(0, 140, 255, 0.35),
+    inset 0 0 15px rgba(255,255,255,0.15);
+
   overflow: hidden;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  animation: pulseLuxury 2.5s infinite;
+  transition: all 0.3s ease;
+  animation: glassPulse 3s infinite;
 }
 
 /* Icon */
@@ -200,7 +181,6 @@ body {
   width: 20px;
   height: 20px;
   fill: currentColor;
-  flex-shrink: 0;
 }
 
 /* Shine sweep */
@@ -208,32 +188,33 @@ body {
   content: "";
   position: absolute;
   top: 0;
-  left: -75%;
+  left: -70%;
   width: 50%;
   height: 100%;
-  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.7), transparent);
   transform: skewX(-20deg);
-  animation: shineMove 4s infinite;
+  animation: shineMove 5s infinite;
 }
 
 @keyframes shineMove {
-  0% { left: -75%; }
+  0% { left: -70%; }
   100% { left: 130%; }
 }
 
 /* Hover */
 .telegram-btn:hover {
-  transform: translateY(-4px) scale(1.03);
+  transform: translateY(-4px) scale(1.04);
   box-shadow:
-    0 15px 60px rgba(0, 140, 255, 0.8),
-    0 0 35px rgba(0, 195, 255, 0.9);
+    0 15px 65px rgba(0, 140, 255, 0.7),
+    0 0 35px rgba(0, 195, 255, 0.8);
+  border-color: #00c6ff;
 }
 
-/* Luxury pulse */
-@keyframes pulseLuxury {
-  0% { box-shadow: 0 0 0 0 rgba(0,140,255,0.6); }
+/* Glass pulse glow */
+@keyframes glassPulse {
+  0% { box-shadow: 0 0 0 rgba(0,140,255,0.4); }
   50% { box-shadow: 0 0 35px rgba(0,195,255,0.9); }
-  100% { box-shadow: 0 0 0 0 rgba(0,140,255,0.6); }
+  100% { box-shadow: 0 0 0 rgba(0,140,255,0.4); }
 }
 
 /* Features */
