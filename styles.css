@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: #0b0f1a;
+    background: radial-gradient(circle at top, #0a0f1f, #05070f 70%);
     color: #fff;
     overflow-x: hidden;
     display: flex;
@@ -16,41 +16,62 @@ body {
     min-height: 100vh;
 }
 
-/* DARK LUXURY BACKGROUND */
-.background {
+/* FLOATING PARTICLES */
+body::before {
+    content: "";
     position: fixed;
-    width: 100%;
-    height: 100%;
-    background:
-        radial-gradient(circle at 20% 20%, rgba(0,123,255,0.15), transparent 40%),
-        radial-gradient(circle at 80% 80%, rgba(0,123,255,0.1), transparent 40%),
-        #0b0f1a;
+    width: 200%;
+    height: 200%;
+    background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: moveParticles 60s linear infinite;
+    z-index: -3;
+}
+
+@keyframes moveParticles {
+    from { transform: translate(0, 0); }
+    to { transform: translate(-500px, -500px); }
+}
+
+/* GOLD LIGHT AURA */
+.gold-glow {
+    position: fixed;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(255,215,0,0.18), transparent 70%);
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: -2;
 }
 
-/* GOLD GLOW EFFECT */
-.gold-glow {
-    position: fixed;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(255,215,0,0.15), transparent 70%);
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: -1;
-}
-
-/* MAIN CARD */
+/* GLASS LUXURY CARD */
 .card {
     width: 95%;
     max-width: 420px;
     padding: 30px 25px;
-    border-radius: 20px;
-    background: linear-gradient(145deg, #111827, #0d1320);
+    border-radius: 22px;
+    backdrop-filter: blur(18px);
+    background: rgba(20, 25, 45, 0.55);
+    border: 1px solid rgba(255, 215, 0, 0.3);
     box-shadow:
-        0 0 30px rgba(0,123,255,0.15),
-        inset 0 0 20px rgba(255,255,255,0.03);
+        0 0 40px rgba(0, 140, 255, 0.15),
+        0 0 80px rgba(255, 215, 0, 0.08);
     text-align: center;
+    position: relative;
+}
+
+/* GOLD BORDER SHINE */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 22px;
+    padding: 1px;
+    background: linear-gradient(45deg, gold, transparent, gold);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
 }
 
 /* FLOAT ANIMATION */
@@ -60,20 +81,15 @@ body {
 
 @keyframes float {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+    50% { transform: translateY(-10px); }
 }
 
-/* PROFILE IMAGE */
-.profile-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 15px;
-}
-
+/* PROFILE */
 .profile-ring {
     padding: 5px;
     border-radius: 50%;
     background: linear-gradient(45deg, gold, #ffcc00, gold);
+    box-shadow: 0 0 25px gold;
 }
 
 .profile-ring img {
@@ -83,18 +99,7 @@ body {
     object-fit: cover;
 }
 
-/* GOLD SHIMMER */
-.shimmer {
-    animation: shimmer 3s infinite linear;
-}
-
-@keyframes shimmer {
-    0% { box-shadow: 0 0 10px gold; }
-    50% { box-shadow: 0 0 25px gold; }
-    100% { box-shadow: 0 0 10px gold; }
-}
-
-/* NAME */
+/* NAME GOLD TEXT */
 .gold-text {
     font-size: 22px;
     font-weight: 700;
@@ -104,41 +109,64 @@ body {
     margin-bottom: 10px;
 }
 
-/* TRUST TEXT */
-.trust {
-    font-size: 14px;
-    color: #ccc;
-    margin-bottom: 15px;
+/* TELEGRAM BUTTON – LUXURY BLUE */
+.telegram-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 18px;
+    background: linear-gradient(135deg, #0088cc, #00c3ff);
+    box-shadow:
+        0 0 25px rgba(0,136,204,0.6),
+        inset 0 0 12px rgba(255,255,255,0.2);
+    transition: 0.3s ease;
+}
+
+.telegram-btn:hover {
+    transform: scale(1.06);
+    box-shadow:
+        0 0 40px rgba(0,136,204,0.9),
+        0 0 80px rgba(0,195,255,0.4);
+}
+
+/* BLUE PULSE */
+.telegram-pulse {
+    animation: pulseBlue 2s infinite;
+}
+
+@keyframes pulseBlue {
+    0% { box-shadow: 0 0 0 0 rgba(0,136,204,0.7); }
+    70% { box-shadow: 0 0 0 22px rgba(0,136,204,0); }
+    100% { box-shadow: 0 0 0 0 rgba(0,136,204,0); }
+}
+
+.tg-icon {
+    width: 22px;
+    height: 22px;
+    fill: white;
 }
 
 /* SUBSCRIBER BOX */
 .subscriber-box {
-    background: rgba(255,255,255,0.05);
+    background: rgba(255,255,255,0.06);
     padding: 10px;
     border-radius: 12px;
     margin-bottom: 15px;
+    border: 1px solid rgba(255,255,255,0.08);
 }
 
 .count {
     font-size: 20px;
     font-weight: 700;
     color: #00bfff;
-    display: block;
-}
-
-.label {
-    font-size: 12px;
-    color: #aaa;
 }
 
 /* BADGES */
-.badge-row {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 18px;
-}
-
 .badge {
     font-size: 11px;
     padding: 5px 10px;
@@ -146,75 +174,16 @@ body {
     background: rgba(255,255,255,0.08);
 }
 
-/* TELEGRAM BUTTON */
-.telegram-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    text-decoration: none;
-    padding: 14px;
-    border-radius: 14px;
-    font-weight: 600;
-    margin-bottom: 18px;
-    background: linear-gradient(135deg, #0088cc, #00aaff);
-    box-shadow: 0 0 20px rgba(0,136,204,0.6);
-    transition: 0.3s ease;
-}
-
-.telegram-btn span {
-    color: white;
-}
-
-.telegram-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 35px rgba(0,136,204,0.9);
-}
-
-/* TELEGRAM ICON */
-.tg-icon {
-    width: 22px;
-    height: 22px;
-    fill: white;
-}
-
-/* BLUE PULSE EFFECT */
-.telegram-pulse {
-    animation: pulseBlue 2s infinite;
-}
-
-@keyframes pulseBlue {
-    0% { box-shadow: 0 0 0 0 rgba(0,136,204,0.7); }
-    70% { box-shadow: 0 0 0 18px rgba(0,136,204,0); }
-    100% { box-shadow: 0 0 0 0 rgba(0,136,204,0); }
-}
-
 /* FEATURES */
-.features {
-    margin: 15px 0;
-}
-
 .feature {
     font-size: 13px;
     margin: 6px 0;
     color: #ddd;
 }
 
-/* DISCLAIMER */
-.disclaimer {
-    font-size: 11px;
-    color: #999;
-    margin-top: 10px;
-}
-
 /* FOOTER */
 footer {
     font-size: 11px;
-    color: #666;
+    color: #777;
     margin-top: 15px;
-}
-
-footer a {
-    color: #00aaff;
-    text-decoration: none;
 }
